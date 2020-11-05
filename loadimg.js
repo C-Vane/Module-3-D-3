@@ -30,8 +30,9 @@ const loadImage = (event) => {
       let card = document.createElement("div");
       card.classList.add("row");
       alertImages(body.images.length);
-      body.images.forEach((element) => {
-        card.innerHTML += `<div class="col-md-4">
+      body.images.forEach((element, index) => {
+        index < 12
+          ? (card.innerHTML += `<div class="col-md-4">
         <div class="card mb-4 shadow-sm">
             <img src="${element.url}" class="card-img-top" height=200px
                 focusable="false">
@@ -54,8 +55,10 @@ const loadImage = (event) => {
                     <small class="text-muted">${element.id}</small>
                 </div>
             </div>
-            </div>`;
+            </div>`)
+          : "";
       });
+
       destination.appendChild(card);
     })
     .catch((err) => {
@@ -80,7 +83,7 @@ const loadSecondaryImage = () => {
       const ids = document.querySelectorAll(".card small");
       //get urls from response
       let Allurls = body.images.map((element) => element.url);
-      console.log(Allurls);
+      //console.log(Allurls);
       alertImages(body.images.length);
       body.images.forEach((element, index) => {
         if (index < destination.length) {
@@ -102,7 +105,7 @@ const viewImage = (event) => {
   img.src = img_src;
 };
 const hideCard = (event) => {
-  let card = event.target.parentNode.parentNode.parentNode.parentNode;
+  let card = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
   card.classList.add("loadoff");
   setTimeout(() => card.remove(), 1000);
 };
@@ -157,7 +160,7 @@ const carousel = () => {
       </div>`;
       });
       destination.insertBefore(img, destination.firstChild);
-      console.log(img, destination);
+      //console.log(img, destination);
     })
     .catch((err) => {
       alert("AN ERROR HAS OCCURRED  " + err);
