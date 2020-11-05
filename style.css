@@ -31,21 +31,24 @@
   padding: 2px 20px;
   position: absolute;
 }
-.modal-dialog,
-.modal {
-  width: 1000px;
+.modal-dialog {
+  width: fit-content;
 }
 .modal-dialog img {
-  width: 100%;
   height: auto;
   max-height: 90vh;
   max-width: 90vh;
+}
+
+.jumbotron .lead + p {
+  display: flex;
+  justify-content: space-around;
 }
 .modal-dialog button {
   position: absolute;
   width: min-content;
   font-size: 40px;
-  right: -40px;
-  top: -30px;
+  right: -15%;
+  top: -5%;
   color: #000000;
 }
